@@ -15,22 +15,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqh-2K-cGx">
-                                <rect key="frame" x="184" y="403" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Pics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D36-TL-tzv">
+                                <rect key="frame" x="156.5" y="94" width="101" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog" translatesAutoresizingMaskIntoConstraints="NO" id="sLI-0N-p1I">
+                                <rect key="frame" x="47" y="180" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="1Zy-j9-wEa"/>
+                                    <constraint firstAttribute="width" constant="320" id="2nS-S3-Sjr"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₩1000000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sk7-15-B4C">
+                                <rect key="frame" x="125.5" y="654" width="163" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqh-2K-cGx">
+                                <rect key="frame" x="165.5" y="740" width="83" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Refresh">
+                                    <color key="titleColor" red="0.73988605900970528" green="0.26325164817386654" blue="0.84267407655715942" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="hello:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TDF-JO-48C"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sk7-15-B4C" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8ss-1t-iCP"/>
+                            <constraint firstItem="sLI-0N-p1I" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GoR-40-cvU"/>
+                            <constraint firstItem="sLI-0N-p1I" firstAttribute="top" secondItem="D36-TL-tzv" secondAttribute="bottom" constant="50" id="T78-NH-O2O"/>
+                            <constraint firstItem="D36-TL-tzv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Vpe-uj-4Qi"/>
+                            <constraint firstItem="sk7-15-B4C" firstAttribute="top" secondItem="sLI-0N-p1I" secondAttribute="bottom" constant="154" id="cp8-fB-W1k"/>
+                            <constraint firstItem="D36-TL-tzv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gDv-sV-H3l"/>
+                            <constraint firstItem="Rqh-2K-cGx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pNE-Kd-Zps"/>
+                            <constraint firstItem="Rqh-2K-cGx" firstAttribute="top" secondItem="sk7-15-B4C" secondAttribute="bottom" constant="50" id="s60-Wu-dMD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="priceLabel" destination="sk7-15-B4C" id="amJ-fV-yAH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139" y="138"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dog" width="1372" height="2024.5"/>
+    </resources>
 </document>
