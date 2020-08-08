@@ -10,8 +10,24 @@ import UIKit
 
 class BountyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let nameList = ["brook","chopper","franky","luffy","nami","robin","sanji","zoro"]
-    let bountyList = [33000000,50,44000000,300000000,16000000,8000000,77000000,120000000]
+    //MVVM
+    
+    //Model
+    // - BountyInfo
+    // > BountyInfo 만들기
+    
+    //View
+    // - ListCell
+    // > ListCell 필요한 정보를 ViewModel 한테서 받는다
+    // > ListCell은 ViewModel로부터 받은 정보로 View를 Update한다
+    
+    //ViewModel
+    // - BountyViewModel
+    // > BountyViewModel 생성
+    // > View에서 필요한 메서드 생성
+    // > Model을 갖고 있는다
+    
+    let viewModel = BountyViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,41 +35,44 @@ class BountyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //ViewController에 있음
+        //세그웨이 이동하기 전 행동 = performSegue 직전의 메소드
+        
+        if segue.identifier == "showDetail" {
+            let vc = segue.destination as? DetailViewController
+            
+            if let index = sender as? Int{
+                vc?.viewModel.bountyInfo = viewModel.bountyInfo(at: index)
+            }
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nameList.count
+        return viewModel.numOfBountyInfoList
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else{
             return UITableViewCell()
         }
-        cell.imgView.image = UIImage(named: "\(nameList[indexPath.row]).jpg")
-        cell.bountyLabel.text = String(bountyList[indexPath.row])
-        cell.nameLabel.text = String(nameList[indexPath.row])
         
+        let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
+        
+        cell.updateCell(bountyInfo: bountyInfo)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {// 셀 클릭시 호출
         print("--> \(indexPath.row)")
+        performSegue(withIdentifier: "showDetail", sender: indexPath.row) //sender 는 prepare로 전달, Identifier는 스토리보드에서 설정했음
+        
     }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }
-class ListCell: UITableViewCell{
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var nameLabel : UILabel!
-    @IBOutlet weak var bountyLabel: UILabel!
-}
+
+
+
+
