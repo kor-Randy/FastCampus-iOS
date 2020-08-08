@@ -18,6 +18,7 @@
 		EB53841F24DEB00F0036902B /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB53841E24DEB00F0036902B /* DetailViewModel.swift */; };
 		EB53842124DEB1770036902B /* BountyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB53842024DEB1770036902B /* BountyInfo.swift */; };
 		EB53842324DEB18A0036902B /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB53842224DEB18A0036902B /* ListCell.swift */; };
+		EB53842524DEBA630036902B /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB53842424DEBA630036902B /* GridCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		EB53841E24DEB00F0036902B /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		EB53842024DEB1770036902B /* BountyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BountyInfo.swift; sourceTree = "<group>"; };
 		EB53842224DEB18A0036902B /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		EB53842424DEBA630036902B /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				EB53841E24DEB00F0036902B /* DetailViewModel.swift */,
 				EB53842024DEB1770036902B /* BountyInfo.swift */,
 				EB53842224DEB18A0036902B /* ListCell.swift */,
+				EB53842424DEBA630036902B /* GridCell.swift */,
 			);
 			path = BountyList;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				EB4BC45724D99E9C00E4145F /* BountyViewController.swift in Sources */,
 				EB4BC44524D99E3E00E4145F /* SceneDelegate.swift in Sources */,
 				EB53841D24DEAED40036902B /* BountyViewModel.swift in Sources */,
+				EB53842524DEBA630036902B /* GridCell.swift in Sources */,
 				EB53842324DEB18A0036902B /* ListCell.swift in Sources */,
 				EB53842124DEB1770036902B /* BountyInfo.swift in Sources */,
 				EB53841B24DEA1540036902B /* DetailViewController.swift in Sources */,

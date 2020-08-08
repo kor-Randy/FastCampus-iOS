@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BountyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BountyViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     //MVVM
     
@@ -49,26 +49,37 @@ class BountyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numOfBountyInfoList
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else{
-            return UITableViewCell()
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GridCell", for: indexPath) as? GridCell else {
+            return UICollectionViewCell()
         }
         
-        let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
-        
+        let bountyInfo = viewModel.bountyInfo(at: indexPath.item)
         cell.updateCell(bountyInfo: bountyInfo)
         
         return cell
+        
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {// 셀 클릭시 호출
-        print("--> \(indexPath.row)")
-        performSegue(withIdentifier: "showDetail", sender: indexPath.row) //sender 는 prepare로 전달, Identifier는 스토리보드에서 설정했음
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("row --> \(indexPath.row)")
+        print("item --> \(indexPath.item)")
+        performSegue(withIdentifier: "showDetail", sender: indexPath.item)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        let itemSpacing: CGFloat = 10 // Item 간 거리 10
+        let textAreaHeight: CGFloat = 65 // 이미지 밑 공간 높이 65
+        
+        let width: CGFloat = (collectionView.bounds.width - itemSpacing)/2
+        let height: CGFloat = width * 10/7 + textAreaHeight // img 크기가 7:10 이고 아래 textArea가 65
+        
+        return CGSize(width: width, height: height)
     }
    
 }
